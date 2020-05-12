@@ -13,7 +13,6 @@ var getNotes = function() {
     url: "/api/notes",
     method: "GET"
   });
-  console.log("GetNotes")
 };
 
 // A function for saving a note to the db
