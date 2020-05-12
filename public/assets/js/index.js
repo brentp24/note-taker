@@ -13,6 +13,7 @@ var getNotes = function() {
     url: "/api/notes",
     method: "GET"
   });
+  console.log("GetNotes")
 };
 
 // A function for saving a note to the db
@@ -55,6 +56,7 @@ var handleNoteSave = function() {
     title: $noteTitle.val(),
     text: $noteText.val()
   };
+  console.log("HandleNoteSave")
 
   saveNote(newNote).then(function(data) {
     getAndRenderNotes();
@@ -78,6 +80,7 @@ var handleNoteDelete = function(event) {
   deleteNote(note.id).then(function() {
     getAndRenderNotes();
     renderActiveNote();
+    console.log("deleteNote")
   });
 };
 
@@ -85,12 +88,14 @@ var handleNoteDelete = function(event) {
 var handleNoteView = function() {
   activeNote = $(this).data();
   renderActiveNote();
+  console.log("handleNoteView")
 };
 
 // Sets the activeNote to and empty object and allows the user to enter a new note
 var handleNewNoteView = function() {
   activeNote = {};
   renderActiveNote();
+  console.log("handleNewNoteView")
 };
 
 // If a note's title or text are empty, hide the save button
@@ -129,6 +134,7 @@ var renderNoteList = function(notes) {
 var getAndRenderNotes = function() {
   return getNotes().then(function(data) {
     renderNoteList(data);
+    
   });
 };
 
