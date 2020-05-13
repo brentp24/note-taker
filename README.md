@@ -12,7 +12,7 @@ SO THAT I can organize my thoughts and keep track of tasks I need to complete
 
 
 ## Image
-![Note Taker](./image/note-taker.jpg)
+![Note Taker](images/note-taker.jpg)
 
 ## Demo
 link to git: [Note Taker](https://brentp24.github.io/note-taker/) 
