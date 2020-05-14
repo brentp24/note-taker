@@ -10,6 +10,7 @@ module.exports = function (app) {
     // Create New Notes- takes in JSON input
     app.post("/api/notes/", function (req, res) {
         var newNote = req.body;
+        console.log("notePost: " + newNote)
         //add on ID number
         newNote.id = Date.now();
         //push newNote to data
@@ -27,26 +28,31 @@ module.exports = function (app) {
     // delete note
     app.delete(`/api/notes/:id`, function (req, res) {
         //read the file. 
+        console.log(req);
+        console.log(res);
         var chosen = req.params.id;
         fs.readFile(__dirname + "/../db/db.json", 'utf8',
             function errorfunction(err, data) {
                 if (err) {
                     console.log(err);
                 }
-  // parse it so that it is an array
-               var parsedData = JSON.parse(data)
-               var clearedData = parsedData.filter(parsedData => parsedData.id != chosen);
+                // parse it so that it is an array
+                var parsedData = JSON.parse(data)
+                var clearedData = parsedData.filter(parsedData => parsedData.id != chosen);
 
-               console.log(clearedData)
+                console.log(clearedData)
+                notesData = clearedData;
+                fs.writeFile(__dirname + "/../db/db.json", JSON.stringify(clearedData), 'utf8',
+                    function errorfunction(err, clearedData) {
+                        if (err) {
+                            console.log(err);
+                        }
 
-               fs.writeFile(__dirname + "/../db/db.json", JSON.stringify(clearedData), 'utf8',
-               function errorfunction(err, clearedData) {
-                   if (err) {
-                       console.log(err);
-                   }
-                   res.json(clearedData); 
-               })
-    });
-})
+                    })
+            })
+            
+        res.json(true);;
+
+    })
 }
 

@@ -58,6 +58,7 @@ var handleNoteSave = function() {
   console.log("HandleNoteSave")
 
   saveNote(newNote).then(function(data) {
+    console.log("newNote: " +  newNote)
     getAndRenderNotes();
     renderActiveNote();
   });
@@ -133,6 +134,7 @@ var renderNoteList = function(notes) {
 var getAndRenderNotes = function() {
   return getNotes().then(function(data) {
     renderNoteList(data);
+    console.log("getAndRenderNotes" + data)
     
   });
 };
