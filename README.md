@@ -17,7 +17,7 @@ SO THAT I can organize my thoughts and keep track of tasks I need to complete
 ## Demo
 link to git: [Note Taker](https://brentp24.github.io/note-taker/) 
 
-link to heroku app:
+link to heroku app:  https://shielded-falls-84012.herokuapp.com/
 
 
 
