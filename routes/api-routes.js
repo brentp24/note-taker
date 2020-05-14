@@ -28,8 +28,6 @@ module.exports = function (app) {
     // delete note
     app.delete(`/api/notes/:id`, function (req, res) {
         //read the file. 
-        console.log(req);
-        console.log(res);
         var chosen = req.params.id;
         fs.readFile(__dirname + "/../db/db.json", 'utf8',
             function errorfunction(err, data) {
@@ -39,8 +37,6 @@ module.exports = function (app) {
                 // parse it so that it is an array
                 var parsedData = JSON.parse(data)
                 var clearedData = parsedData.filter(parsedData => parsedData.id != chosen);
-
-                console.log(clearedData)
                 notesData = clearedData;
                 fs.writeFile(__dirname + "/../db/db.json", JSON.stringify(clearedData), 'utf8',
                     function errorfunction(err, clearedData) {
